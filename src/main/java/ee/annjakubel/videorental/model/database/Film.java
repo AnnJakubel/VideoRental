@@ -1,6 +1,5 @@
 package ee.annjakubel.videorental.model.database;
 
-import ee.annjakubel.videorental.model.FilmType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +18,10 @@ import javax.persistence.Id;
 public class Film {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private FilmType type;//Filmtype ehk premium/basic/old ja vastav hind
+    private String type;//Filmtype ehk premium/basic/old ja vastav hind
     private int price;
 
 }

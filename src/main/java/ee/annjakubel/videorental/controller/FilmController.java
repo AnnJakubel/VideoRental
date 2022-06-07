@@ -13,8 +13,7 @@ import java.util.List;
 @RestController
 public class FilmController {
 
-    //TODO: Testi Postmanis k6ik rest p2ringud j2rgi
-    //Hindade arvutamise systeem enumi j2rgi
+    //Hindade arvutamise systeem
         //Ka OrderService alla?
 
     // Tellimuse arvutamine
@@ -43,6 +42,9 @@ public class FilmController {
     @PostMapping("videorental")
     public ResponseEntity<List<Film>> saveFilm(@RequestBody Film film) {
         filmRepository.save(film);
+        filmService.updateFilm(film);
+        filmService.setPrice(film);
+        filmRepository.save(film);
         return ResponseEntity.ok()
                 .body(filmRepository.findAll());
     }
@@ -50,6 +52,7 @@ public class FilmController {
     //Vist ok
     @GetMapping("videorental")
     public ResponseEntity<List<Film>> getAllFilms() {
+
         return ResponseEntity.ok().body(filmRepository.findAll());
     }
 
