@@ -18,8 +18,6 @@ import javax.persistence.Id;
 public class Film {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String title;
     private String type;//Filmtype ehk premium/basic/old ja vastav hind
     private int price;

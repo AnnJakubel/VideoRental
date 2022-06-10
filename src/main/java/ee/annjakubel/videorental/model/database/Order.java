@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -20,6 +18,7 @@ public class Order {
 
     @Id
     private Long orderNumber;
+    @OneToOne
     private Person person;
     @OneToMany
     private List<Film> films;

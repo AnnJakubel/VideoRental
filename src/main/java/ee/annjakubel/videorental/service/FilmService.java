@@ -25,7 +25,7 @@ public class FilmService {
     }
 
     public Film updateFilm(Film film) {
-        Film updatedFilm = filmRepository.findById(film.getId()).get();
+        Film updatedFilm = filmRepository.findById(film.getTitle()).get();
         updatedFilm.setType(film.getType());
         return updatedFilm;
 

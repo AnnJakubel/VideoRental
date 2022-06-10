@@ -13,13 +13,7 @@ import java.util.List;
 @RestController
 public class FilmController {
 
-    //Hindade arvutamise systeem
-        //Ka OrderService alla?
 
-    // Tellimuse arvutamine
-        //Order
-        //OrderController?
-        //OrderService?
 
     //Kliendibaas
         //Esialgu basic: nimi, ID, orderite massiiv?, boonuspunktid
@@ -29,7 +23,6 @@ public class FilmController {
             // ja tagastusel
             // et arvutada p2evade vahe ja lisap2evad
                 // lisap2evade p6hjal hind
-        //tellimusele vaja ID eraldi kylge
     //Boonuspunktid
 
     @Autowired
@@ -38,7 +31,7 @@ public class FilmController {
     @Autowired
     FilmRepository filmRepository;
 
-    //Vist ok
+    //OK
     @PostMapping("videorental")
     public ResponseEntity<List<Film>> saveFilm(@RequestBody Film film) {
         filmRepository.save(film);
@@ -49,27 +42,26 @@ public class FilmController {
                 .body(filmRepository.findAll());
     }
 
-    //Vist ok
+    //OK
     @GetMapping("videorental")
     public ResponseEntity<List<Film>> getAllFilms() {
-
         return ResponseEntity.ok().body(filmRepository.findAll());
     }
 
 
-    // Vist ok
+    // OK
     @PutMapping("videorental")
     public ResponseEntity<Film> editFilm(@RequestBody Film film) {
         filmService.updateFilm(film);
         filmService.setPrice(film);
         filmRepository.save(film);
-        return ResponseEntity.ok().body(filmRepository.findById(film.getId()).get());
+        return ResponseEntity.ok().body(filmRepository.findById(film.getTitle()).get());
     }
 
-    //Vist ok
-    @DeleteMapping("videorental/{id}")
-    public ResponseEntity<List<Film>> deleteFilm(@PathVariable Long id) {
-        filmRepository.deleteById(id);
+    //OK
+    @DeleteMapping("videorental")
+    public ResponseEntity<List<Film>> deleteFilm(@RequestBody Film film) {
+        filmRepository.deleteById(film.getTitle());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(filmRepository.findAll());
     }
