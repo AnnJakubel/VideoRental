@@ -17,6 +17,7 @@ import java.util.List;
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long orderNumber;
     @OneToOne
     private Person person;
