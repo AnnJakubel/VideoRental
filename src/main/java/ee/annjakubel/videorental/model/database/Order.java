@@ -14,16 +14,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name= "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long orderNumber;
-    @OneToOne
+    @ManyToOne
     private Person person;
     @OneToMany
     private List<Film> films;
     private int days;
+    private int daysOver;
     private int initialPrice;
+    private int extraFee;
     private boolean returned;
 }

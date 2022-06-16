@@ -63,4 +63,17 @@ public class OrderService {
     }
 
 
+    public int calculateExtraFee(int daysOver, List<Film> films) {
+        int sum = 0;
+        for (Film f : films) {
+            if (f.getType().equals("OLD") || f.getType().equals("BASIC")) {
+                sum = sum + (3 * daysOver);
+            }
+
+            if (f.getType().equals("PREMIUM")) {
+                sum = sum + (4 * daysOver);
+            }
+        }
+        return sum;
+    }
 }
