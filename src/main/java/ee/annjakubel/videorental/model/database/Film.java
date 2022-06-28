@@ -19,7 +19,7 @@ public class Film {
 
     @Id
     private String title;
-    private String type;//Filmtype ehk premium/basic/old ja vastav hind
+    private String type;
     private int price;
 
 }

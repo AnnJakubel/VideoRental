@@ -88,4 +88,12 @@ public class OrderController {
     }
 
 
+    @DeleteMapping("videorental/order/{orderNumber}")
+    public ResponseEntity<List<Order>> deleteOrder(@PathVariable Long orderNumber) {
+        orderRepository.deleteById(orderNumber);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(orderRepository.findAll());
+    }
+
+
 }
